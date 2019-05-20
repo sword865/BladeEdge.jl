@@ -1,0 +1,18 @@
+# Created by .ignore support plugin (hsz.mobi)
+###  Max OS
+.DS_Store
+
+### Julia template
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+deps/deps.jl
+
+### JetBrains template
+*.iml
+.idea
+
+# IntelliJ
+out/
+
+
