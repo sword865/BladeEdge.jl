@@ -12,6 +12,9 @@ deps/deps.jl
 *.iml
 .idea
 
+## VSC
+.vscode
+
 # IntelliJ
 out/
 
