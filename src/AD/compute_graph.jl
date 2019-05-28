@@ -1,5 +1,5 @@
 export AbstractNode, Value
-export Variable, Node, CachedNode, forward, gradient, backward, value
+export Variable, Node, CachedNode, forward, gradient, backward, value, arg, args, kwargs, operator
 export register
 
 abstract type Operator end

@@ -20,6 +20,10 @@ function backward end
 backward(x, grad) = x
 backward(x::AbstractNode) = backward(x::AbstractNode, one(eltype(x)))
 # for boardcast repeat
+function backward(x::Variable{<:Number}, grad::Number)
+    x.grad += sum(grad)
+    nothing
+end
 function backward(x::Variable{<:Number}, grad::AbstractArray)
     x.grad += sum(grad)
     nothing

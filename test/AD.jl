@@ -30,19 +30,20 @@ function test_loss()
     println("init w: $w, init b: $b")
 
     echo = 1
+    pred = (x * w .+ b)
+    loss = sum(abs2.(pred - y))
     while true
-        pred = (x * w .+ b)
-        loss = sum(abs2.(pred - y))
-
-        loss_value = forward(loss)
+        loss_value = value(loss)
         println("echo: $echo, loss: $loss_value")
         if loss_value < 1e-2
             break
         end
         echo += 1
         backward(loss)
-        w.value -= 5e-8 * w.grad
-        b.value -= 5e-8 * b.grad
+        w.value -= 5e-4 * w.grad
+        b.value -= 5e-4 * b.grad
+        forward(loss)
+        zero_grad!(loss)
     end
 
 

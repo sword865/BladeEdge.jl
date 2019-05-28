@@ -12,3 +12,6 @@ forward(node::Value) = value(node)
 forward(node::Node) = forward(node.f, map(forward, node.args)...; map(forward, node.kwargs)...)
 forward(op::Operator, args...; kwargs...) = op.f(args...; kwargs...)
 forward(op::Trait.Broadcasted, args...) = Broadcast.broadcasted(op.f, args...)
+function forward(node::CachedNode)
+    node.output = forward(node.node)
+end
